@@ -1,4 +1,4 @@
-<center>![](/banniere.avif)</center>center>
+<center> ![](/banniere.avif) </center>
 
 # <center> <ins> presentation </ins> </center>
 Bienvenue sur ce dépôt Github servant à présenter des exemples de codes que j'ai pu produire au cours de mes études ou sur mon temps personnel
@@ -30,3 +30,5 @@ _Python
 ---
 
 Merci d'avoir pris le temps de visiter ce GitHub, si vous avez des remarques n'hésitez pas à me recontacter
+
+<center> ![](/banniere.avif) </center>
