@@ -3,6 +3,8 @@
 # <center> <ins> Presentation </ins> </center>
 Bienvenue sur ce dépôt Github servant à présenter des exemples de codes que j'ai pu produire au cours de mes études ou sur mon temps personnel
 
+/!\ ATTENTION : ce dépôt GitHub est en construction ! Les premiers projets arrivent petit à petit
+
 --- 
 
 ## <center> <ins> Developpement </ins> </center>
