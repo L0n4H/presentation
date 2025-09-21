@@ -7,3 +7,7 @@ passe sécurisé en ligne de commande
 # 1/ interface 
 # 2/ BDD
 # 3/ Systeme de chiffrage
+
+import affichages as aff
+
+aff.dem_app()
