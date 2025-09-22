@@ -18,32 +18,68 @@ def dem_app():
     while not correct :
         reponse = input("Choisissez 1/ ou 2/ ou 3/ .\nVotre réponse : ")
         choix = ""
-        if not (reponse != int):
-            if int(reponse) == 1:
+        try:
+            reponse_int = int(reponse)
+            print(reponse_int)
+            if reponse_int == 1:
+                print(" je suis arrivé ici")
                 choix = "Vous avez choisi de vous connecter"
-                correct = True
                 print(choix)
                 connexion()
-            elif int(reponse) == 2:
-                choix = "Vous avez choisi de vous inscrire"
                 correct = True
+            elif reponse_int == 2:
+                choix = "Vous avez choisi de vous inscrire"
                 print(choix)
                 inscription()
-            elif int(reponse) == 3:
+                correct = True
+            elif reponse_int == 3:
                 choix = "Vous quittez l'application"
                 quitter()
                 return None
-            else:
-                print("veuillez choisir une option valide")
+        
+        except:
+            print("Veuillez entrer une réponse valide")
 
 
 def connexion():
-    print("En cours ...")
+    # print("En cours ...")
+    print("Vous êtes sur la page de connexion")
+    id_co = input("Veuillez entrer votre identifiant (q pour quitter): ")
+    if id_co == 'q':
+        quitter()
+        return None
 
+    mdp_co = input("Veuillez entrer votre mot de passe : ")
+    print("identifiant : ", id_co, " | mot de passe : ", mdp_co)
+    # maintenant faut aller dans la bd
+    
 def inscription():
-    print("En cours ...")
+    # print("En cours ...")
+    print("Vous êtes sur la page d'inscription (q pour quitter): ")
+    fini = False
+    while not fini :
+        id_ins = input("Veuillez entrer un identifiant : ")
+        if id_ins == 'q':
+            quitter()
+            return None
+        mdp_ins = input("Veuillez entrer votre mot de passe : ")
+        
+        print("D'accord ! Votre identifiant est ", id_ins, " | et votre mot de passe est : ", mdp_ins)
+        rep = input("Confirmez vous ces informations ? (O oui, N non) :")
+        print("la reponse : ", rep)
+        if rep == 'o' or rep == 'O':
+            # on rentre dans la bd les infos
+            print("Enregistrement des informations ...")
+            fini = True
+        elif rep == 'n' or rep == 'N':
+            # on reprend les infos
+            print("D'accord")
+
+    
 
 def quitter():
     print("Au revoir !")
+    # res = "Au revoir !"
+    # return res
 
 
