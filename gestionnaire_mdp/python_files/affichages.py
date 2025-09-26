@@ -25,7 +25,6 @@ def start()-> int:
 
 
 def connexion()-> list:
-    # print("En cours ...")
     print("Vous êtes sur la page de connexion")
     id_co = input("Veuillez entrer votre identifiant (q pour quitter): ")
     if id_co == 'q':
@@ -38,9 +37,9 @@ def connexion()-> list:
     return informations
     
 def inscription()-> list:
-    # print("En cours ...")
     print("Vous êtes sur la page d'inscription (q pour quitter): ")
     fini = False
+    informations = []
     while not fini :
         id_ins = input("Veuillez entrer un identifiant : ")
         if id_ins == 'q':
@@ -54,10 +53,13 @@ def inscription()-> list:
         if rep == 'o' or rep == 'O':
             # on rentre dans la bd les infos
             print("Enregistrement des informations ...")
+            informations = [id_ins, mdp_ins]
             fini = True
         elif rep == 'n' or rep == 'N':
             # on reprend les infos
             print("D'accord")
+    
+    return informations
 
     
 

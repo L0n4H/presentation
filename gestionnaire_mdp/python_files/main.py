@@ -43,9 +43,13 @@ def main():
         if res:
             print("La connexion a fonctionné")
         else:
-            print("La connexion à échoué")
+            print("La connexion a échoué")
     else:
-        pass
+        res = co.s_inscrire(informations)
+        if res:
+            print("L'inscription a fonctionné")
+        else:
+            print("L'inscription a échoué")
     
     co.fermer()
 

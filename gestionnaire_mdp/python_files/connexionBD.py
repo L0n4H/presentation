@@ -38,6 +38,11 @@ def se_connecter(les_infos) -> bool:
         print(f"Erreur lors de la connexion")
         return False
 
+def s_inscrire(les_infos):
+    id_co = les_infos[0]
+    mdp_co = les_infos[1]
+    # En cours de création ...
+    return False
 
 
 
