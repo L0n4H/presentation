@@ -22,7 +22,7 @@ def dem_app():
             reponse_int = int(reponse)
             print(reponse_int)
             if reponse_int == 1:
-                print(" je suis arrivé ici")
+                print("\n----------------------------------")
                 choix = "Vous avez choisi de vous connecter"
                 print(choix)
                 connexion()
