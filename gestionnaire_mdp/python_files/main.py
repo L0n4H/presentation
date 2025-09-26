@@ -9,7 +9,11 @@ passe sécurisé en ligne de commande
 # 3/ Systeme de chiffrage
 
 import affichages as aff
+import connexionBD as co
 
 
 
-aff.dem_app()
+#aff.dem_app()
+
+print('\ntest de connexion à la BD')
+co.test()
