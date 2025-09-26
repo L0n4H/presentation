@@ -17,3 +17,5 @@ import connexionBD as co
 
 print('\ntest de connexion à la BD')
 co.test()
+
+

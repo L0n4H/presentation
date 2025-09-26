@@ -3,6 +3,7 @@ Ici, on gère tous les affichages de l'application
 On gère aussi les interactions avec l'utilisateur
 C'est la partie "front-end"
 """
+import connexionBD as co
 
 
 def dem_app():
