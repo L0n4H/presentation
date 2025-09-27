@@ -3,10 +3,9 @@ Ici, on gère tous les affichages de l'application
 On gère aussi les interactions avec l'utilisateur
 C'est la partie "front-end"
 """
-import connexionBD as co
 
 
-def dem_app():
+def start()-> int:
     """
     Ceci est la fonction qui sert à lancer l'application"""
     print("\n-----Bonjour et bienvenue ! ----- ")
@@ -18,32 +17,14 @@ def dem_app():
     correct = False;
     while not correct :
         reponse = input("Choisissez 1/ ou 2/ ou 3/ .\nVotre réponse : ")
-        choix = ""
         try:
             reponse_int = int(reponse)
-            print(reponse_int)
-            if reponse_int == 1:
-                print("\n----------------------------------")
-                choix = "Vous avez choisi de vous connecter"
-                print(choix)
-                connexion()
-                correct = True
-            elif reponse_int == 2:
-                choix = "Vous avez choisi de vous inscrire"
-                print(choix)
-                inscription()
-                correct = True
-            elif reponse_int == 3:
-                choix = "Vous quittez l'application"
-                quitter()
-                return None
-        
+            return reponse_int        
         except:
             print("Veuillez entrer une réponse valide")
 
 
-def connexion():
-    # print("En cours ...")
+def connexion()-> list:
     print("Vous êtes sur la page de connexion")
     id_co = input("Veuillez entrer votre identifiant (q pour quitter): ")
     if id_co == 'q':
@@ -51,13 +32,13 @@ def connexion():
         return None
 
     mdp_co = input("Veuillez entrer votre mot de passe : ")
-    print("identifiant : ", id_co, " | mot de passe : ", mdp_co)
-    # maintenant faut aller dans la bd
+    informations = [id_co, mdp_co]
+    return informations
     
-def inscription():
-    # print("En cours ...")
+def inscription()-> list:
     print("Vous êtes sur la page d'inscription (q pour quitter): ")
     fini = False
+    informations = []
     while not fini :
         id_ins = input("Veuillez entrer un identifiant : ")
         if id_ins == 'q':
@@ -71,15 +52,19 @@ def inscription():
         if rep == 'o' or rep == 'O':
             # on rentre dans la bd les infos
             print("Enregistrement des informations ...")
+            informations = [id_ins, mdp_ins]
             fini = True
         elif rep == 'n' or rep == 'N':
             # on reprend les infos
             print("D'accord")
+    
+    return informations
 
     
 
-def quitter():
+def quitter()-> bool:
     print("Au revoir !")
+    return True
     # res = "Au revoir !"
     # return res
 
