@@ -38,12 +38,15 @@ def main():
             aff.quitter()
             return None
         
+    # si l'utilisateur se connecte
     if connexion:
         res = co.se_connecter(informations)
         if res:
             print("La connexion a fonctionné")
         else:
             print("La connexion a échoué")
+
+    # si l'utilisateur s'inscrit
     else:
         res = co.s_inscrire(informations)
         if res:

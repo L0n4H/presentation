@@ -57,3 +57,11 @@ INSERT INTO users (username, master_password) VALUES
 
 INSERT INTO passwords (user_id, titre, username, password) VALUES 
 (4, 'Instagram', 'admin', 'Si je suis ici je suis content');
+
+
+
+
+SELECT id
+FROM users
+WHERE EXISTS
+(SELECT id FROM users WHERE username='admin' AND master_password='admin');

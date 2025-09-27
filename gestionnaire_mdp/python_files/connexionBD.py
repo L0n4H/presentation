@@ -39,10 +39,29 @@ def se_connecter(les_infos) -> bool:
         return False
 
 def s_inscrire(les_infos):
-    id_co = les_infos[0]
-    mdp_co = les_infos[1]
-    # En cours de création ...
-    return False
+    id_ins = les_infos[0]
+    mdp_ins = les_infos[1]
+    # on verif qu'il est pas dedans :
+    try :
+        req = "SELECT id FROM users WHERE EXISTS (SELECT id FROM users WHERE username= ?)"
+        cursor.execute(req, (id_ins,))
+        rows = cursor.fetchall()
+
+        # si le tableau qu'il revnvoie est vide (donc l'utilisateur n'existe pas)
+        if len(rows) == 0:
+            req2 = " INSERT INTO users (username, master_password) VALUES (?, ?)"
+            cursor.execute(req2, (id_ins,mdp_ins))
+            rows2 = cursor.fetchall()
+            if len(rows2)==2:
+                print("Inscription réussie")
+                return True
+
+        else:
+            print(f"Cet utilisateur est déja enregistré")
+            return False
+    except :
+        print(f"Erreur lors de l'inscription")
+        return False
 
 
 
