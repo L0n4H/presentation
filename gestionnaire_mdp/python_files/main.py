@@ -62,10 +62,13 @@ def main():
     quitter = False
     while not quitter:
         print("Bienvenu : " + informations[0] + " " + informations[1])
-
-        
-        if 1==1:
+        reponse = aff.menu()
+        if reponse == 0 or reponse == 3:
             quitter = aff.quitter()
+        elif reponse==1:
+            print("In progress ... tout de suite ")
+        elif reponse==2:
+            print("In progress ...")
     
     co.fermer()
 

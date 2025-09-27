@@ -60,6 +60,32 @@ def inscription()-> list:
     
     return informations
 
+
+def menu()-> int:
+    fini = False
+    rep = 0
+    while not fini:
+        print("Que voulez vous faire ?")
+        print("1/ Afficher mes mots de passe")
+        print("2/ Créer un nouveau mot de passe")
+        print("3/ Quitter (q)")
+        res = input("Votre choix : ")
+        try:
+            rep = int(res)
+            if rep < 3:
+                fini = True
+            else:
+                print("\n")
+                print('----------------------------------')
+                print("Veuillez entrer un choix valide")
+        except:
+            if res == 'q':
+                fini = True            
+            else:
+                print("\n")
+                print('----------------------------------')
+                print("Veuillez entrer un choix valide")
+    return rep
     
 
 def quitter()-> bool:
