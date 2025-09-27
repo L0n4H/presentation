@@ -16,43 +16,56 @@ def main():
     rep = aff.start()
     informations = list
     connexion = None
-    correct = False;
-    while not correct :
-        choix = ""
-        print(rep)
-        if rep == 1:
-            print("\n----------------------------------")
-            choix = "Vous avez choisi de vous connecter"
-            print(choix)
-            informations = aff.connexion()
-            connexion = True
-            correct = True
-        elif rep == 2:
-            choix = "Vous avez choisi de vous inscrire"
-            print(choix)
-            informations = aff.inscription()
-            connexion = False
-            correct = True
-        elif rep == 3:
-            choix = "Vous quittez l'application"
-            aff.quitter()
-            return None
-        
-    # si l'utilisateur se connecte
-    if connexion:
-        res = co.se_connecter(informations)
-        if res:
-            print("La connexion a fonctionné")
-        else:
-            print("La connexion a échoué")
+    co_en_cours = True
+    while co_en_cours:
+        correct = False;
+        while not correct :
+            choix = ""
+            print(rep)
+            if rep == 1:
+                print("\n----------------------------------")
+                choix = "Vous avez choisi de vous connecter"
+                print(choix)
+                informations = aff.connexion()
+                connexion = True
+                correct = True
+            elif rep == 2:
+                choix = "Vous avez choisi de vous inscrire"
+                print(choix)
+                informations = aff.inscription()
+                connexion = False
+                correct = True
+            elif rep == 3:
+                choix = "Vous quittez l'application"
+                aff.quitter()
+                return None
+            
+        # si l'utilisateur se connecte
+        if connexion:
+            res = co.se_connecter(informations)
+            if res:
+                print("La connexion a fonctionné")
+                co_en_cours = False
+            else:
+                print("La connexion a échoué")
 
-    # si l'utilisateur s'inscrit
-    else:
-        res = co.s_inscrire(informations)
-        if res:
-            print("L'inscription a fonctionné")
+        # si l'utilisateur s'inscrit
         else:
-            print("L'inscription a échoué")
+            res = co.s_inscrire(informations)
+            if res:
+                print("L'inscription a fonctionné")
+                co_en_cours = False
+            else:
+                print("L'inscription a échoué")
+
+    # ici, l'application est sur sa page d'acceuil
+    quitter = False
+    while not quitter:
+        print("Bienvenu : " + informations[0] + " " + informations[1])
+
+        
+        if 1==1:
+            quitter = aff.quitter()
     
     co.fermer()
 

@@ -32,7 +32,6 @@ def connexion()-> list:
         return None
 
     mdp_co = input("Veuillez entrer votre mot de passe : ")
-    print("identifiant : ", id_co, " | mot de passe : ", mdp_co)
     informations = [id_co, mdp_co]
     return informations
     
@@ -63,8 +62,9 @@ def inscription()-> list:
 
     
 
-def quitter():
+def quitter()-> bool:
     print("Au revoir !")
+    return True
     # res = "Au revoir !"
     # return res
 
