@@ -68,6 +68,7 @@ def main():
         print("Bienvenu : " + informations[0])
         reponse = aff.menu()
         print(SEPARATEUR)
+        print("la reponse est :", reponse)
         if reponse == 0 or reponse == 3:
             quitter = aff.quitter()
         elif reponse==1:

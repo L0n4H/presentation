@@ -73,7 +73,7 @@ def menu()-> int:
         res = input("Votre choix : ")
         try:
             rep = int(res)
-            if rep < 3:
+            if rep < 4:
                 fini = True
             else:
                 print("\n")
@@ -123,6 +123,9 @@ def choix_compte(lst:list)-> None:
             print('Vous quittez le menu')
         else :
             print(err)
+
+    
+
 
 def quitter()-> bool:
     print("Au revoir !")
