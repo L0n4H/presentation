@@ -77,7 +77,10 @@ def main():
             aff.liste_comptes(les_comptes)
             aff.choix_compte(les_comptes)
         elif reponse==2:
-            print("In progress ...")
+            nom_compte = input("Entrez le nom du site : ")
+            id_compt = input("Entrez votre identifiant sur ce site : ")
+            mdp_compte = input("Entrez le mot de passe de ce compte : ")
+            co.new_compte(nom_compte, id_compte, mdp_compte)           
     
     co.fermer()
 

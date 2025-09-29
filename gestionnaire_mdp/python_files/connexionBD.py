@@ -49,10 +49,8 @@ def s_inscrire(les_infos):
 
         # si le tableau qu'il revnvoie est vide (donc l'utilisateur n'existe pas)
         if len(rows) == 0:
-            print("dans le if")
             # Insérer le nouvel utilisateur
             req2 = "INSERT INTO users (username, master_password) VALUES (?, ?)"
-            print("la requete est : ", req2)
             cursor.execute(req2, (id_ins, mdp_ins))
             connection.commit()
             print("Inscription réussie")
@@ -81,6 +79,29 @@ def comptes(nom_client) -> list:
         print("Erreur")
         return ["erreur"]
 
+def new_compte(site, id, mdp)-> bool:
+    # on verif qu'il est pas dedans :
+    try :
+        req = "SELECT password FROM passwords WHERE EXISTS (SELECT password FROM passwords WHERE titre= ? AND username= ?)"
+        cursor.execute(req, (site,id))
+        rows = cursor.fetchall()
+
+        # si le tableau qu'il revnvoie est vide (donc l'utilisateur n'existe pas)
+        if len(rows) == 0:
+            print("dans le if")
+            # Insérer le nouvel utilisateur
+            req2 = "INSERT INTO passwords (username, master_password) VALUES (?, ?)"
+            print("la requete est : ", req2)
+            cursor.execute(req2, (id_ins, mdp_ins))
+            connection.commit()
+            print("Inscription réussie")
+            return True
+        else:
+            print(f"Cet utilisateur est déja enregistré")
+            return False
+    except :
+        print("Erreur lors de l'inscription")
+        return False
 
 
 def fermer():
