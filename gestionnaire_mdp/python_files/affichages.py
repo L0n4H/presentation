@@ -100,23 +100,29 @@ def liste_comptes(lst:list)-> None:
         print(indice_str,'/ |',site,espace*' ', '|')
         print("\n")
         indice +=1
+    print('Q pour quitter \n' )
     return None
 
 def choix_compte(lst:list)-> None:
     err = "veuillez entrer une réponse valide"
+    print("Choisissez un compte : ")
+    res = input("Réponse :")
     try:
-        print("Choisissez un compte : ")
-        res = int(input("Réponse :"))
-        res -=1
-        if res > len(lst):
+        choix = int(res)
+        
+        choix -=1
+        if choix > len(lst):
             print(err)
         else: 
-            compte = lst[res]
+            compte = lst[choix]
             site, id, mdp = compte
             print("Le mot de passe pour votre compte ", site, " est : ", mdp)
 
     except:
-        print(err)
+        if res == 'q' or res == 'Q':
+            print('Vous quittez le menu')
+        else :
+            print(err)
 
 def quitter()-> bool:
     print("Au revoir !")

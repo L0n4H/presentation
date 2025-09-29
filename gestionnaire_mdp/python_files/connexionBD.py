@@ -68,20 +68,13 @@ def s_inscrire(les_infos):
 def comptes(nom_client) -> list:
     try:
         cpts = []
-        print("dans le try")
         req = "SELECT p.titre, p.username, p.password FROM passwords p JOIN users u on u.id=p.user_id where u.username=?"
-        print("la requete : " + req)
         cursor.execute(req, (nom_client,))
         rows = cursor.fetchall()
-        print('aaaa :', rows)
         if len(rows) == 0:
-            print("on est dans e if la")
-            print(rows)
             print("Vous n'avez aucun comptes")
         else:
-            print("on est dans e else la")
             for row in rows:
-                print("on est dans la boucle")
                 cpts.append(row)
         return cpts
     except Exception :
