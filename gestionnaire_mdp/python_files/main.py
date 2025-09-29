@@ -11,6 +11,8 @@ passe sécurisé en ligne de commande
 import affichages as aff
 import connexionBD as co
 
+SEPARATEUR   = "\n----------------------------------"
+
 
 def main():
     rep = aff.start()
@@ -23,7 +25,7 @@ def main():
             choix = ""
             print(rep)
             if rep == 1:
-                print("\n----------------------------------")
+                print(SEPARATEUR)
                 choix = "Vous avez choisi de vous connecter"
                 print(choix)
                 informations = aff.connexion()
@@ -61,11 +63,20 @@ def main():
     # ici, l'application est sur sa page d'acceuil
     quitter = False
     while not quitter:
-        print("Bienvenu : " + informations[0] + " " + informations[1])
 
-        
-        if 1==1:
+        print(SEPARATEUR)
+        print("Bienvenu : " + informations[0])
+        reponse = aff.menu()
+        print(SEPARATEUR)
+        if reponse == 0 or reponse == 3:
             quitter = aff.quitter()
+        elif reponse==1:
+            print("Voici vos comptes enregistrés ")
+            les_comptes = co.comptes(informations[0])
+            aff.liste_comptes(les_comptes)
+            aff.choix_compte(les_comptes)
+        elif reponse==2:
+            print("In progress ...")
     
     co.fermer()
 

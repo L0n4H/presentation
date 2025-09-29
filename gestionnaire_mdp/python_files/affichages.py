@@ -4,12 +4,13 @@ On gère aussi les interactions avec l'utilisateur
 C'est la partie "front-end"
 """
 
+SEPARATEUR   = "\n----------------------------------"
 
 def start()-> int:
     """
     Ceci est la fonction qui sert à lancer l'application"""
     print("\n-----Bonjour et bienvenue ! ----- ")
-    print('----------------------------------')
+    print(SEPARATEUR)
     print('Que voulez vous faire ? ')
     print("1/ Je souhaite me connecter à l'application")
     print("2/ Je souhaite m'inscrire sur l'application")
@@ -60,7 +61,68 @@ def inscription()-> list:
     
     return informations
 
+
+def menu()-> int:
+    fini = False
+    rep = 0
+    while not fini:
+        print("Que voulez vous faire ?")
+        print("1/ Afficher mes comptes")
+        print("2/ Créer un nouveau mot de passe")
+        print("3/ Quitter (q)")
+        res = input("Votre choix : ")
+        try:
+            rep = int(res)
+            if rep < 3:
+                fini = True
+            else:
+                print("\n")
+                print(SEPARATEUR)
+                print("Veuillez entrer un choix valide")
+        except:
+            if res == 'q':
+                fini = True            
+            else:
+                print("\n")
+                print(SEPARATEUR)
+                print("Veuillez entrer un choix valide")
+    return rep
     
+
+def liste_comptes(lst:list)-> None:
+    indice = 1
+    for cpt in lst:
+        #print(cpt[-1], '|',cpt[1],'|',cpt[2], '|')
+        site, id, mdp = cpt 
+        espace = 25 - len(site)
+        print(SEPARATEUR )
+        indice_str = str(indice)
+        print(indice_str,'/ |',site,espace*' ', '|')
+        print("\n")
+        indice +=1
+    print('Q pour quitter \n' )
+    return None
+
+def choix_compte(lst:list)-> None:
+    err = "veuillez entrer une réponse valide"
+    print("Choisissez un compte : ")
+    res = input("Réponse :")
+    try:
+        choix = int(res)
+        
+        choix -=1
+        if choix > len(lst):
+            print(err)
+        else: 
+            compte = lst[choix]
+            site, id, mdp = compte
+            print("Le mot de passe pour votre compte ", site, " est : ", mdp)
+
+    except:
+        if res == 'q' or res == 'Q':
+            print('Vous quittez le menu')
+        else :
+            print(err)
 
 def quitter()-> bool:
     print("Au revoir !")

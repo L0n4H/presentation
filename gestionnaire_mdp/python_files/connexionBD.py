@@ -35,7 +35,7 @@ def se_connecter(les_infos) -> bool:
             return False
             
     except :
-        print(f"Erreur lors de la connexion")
+        print("Erreur lors de la connexion")
         return False
 
 def s_inscrire(les_infos):
@@ -43,7 +43,6 @@ def s_inscrire(les_infos):
     mdp_ins = les_infos[1]
     # on verif qu'il est pas dedans :
     try :
-        print("dans le try")
         req = "SELECT id FROM users WHERE EXISTS (SELECT id FROM users WHERE username= ?)"
         cursor.execute(req, (id_ins,))
         rows = cursor.fetchall()
@@ -58,13 +57,29 @@ def s_inscrire(les_infos):
             connection.commit()
             print("Inscription réussie")
             return True
-
         else:
             print(f"Cet utilisateur est déja enregistré")
             return False
     except :
-        print(f"Erreur lors de l'inscription")
+        print("Erreur lors de l'inscription")
         return False
+
+
+def comptes(nom_client) -> list:
+    try:
+        cpts = []
+        req = "SELECT p.titre, p.username, p.password FROM passwords p JOIN users u on u.id=p.user_id where u.username=?"
+        cursor.execute(req, (nom_client,))
+        rows = cursor.fetchall()
+        if len(rows) == 0:
+            print("Vous n'avez aucun comptes")
+        else:
+            for row in rows:
+                cpts.append(row)
+        return cpts
+    except Exception :
+        print("Erreur")
+        return ["erreur"]
 
 
 
